@@ -1,0 +1,37 @@
+Visibility
+
+In MyContract.sol
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract MyContract {
+    
+    //funcion functionName() visibilityKeyword modifierKeyword returns(dataType)
+    // private, internal, external, public
+
+    // modifier > how to interact with the blockchain
+    //modifier : view, pure
+
+    //define variable, function for assign it and functions to view it
+
+    string name;
+    function setName(string memory _name) external {
+        name = _name;
+    }
+
+    function getName() external view returns(string memory) {
+        return name;
+    }
+}
+
+
+######################
+contract migrate
+truffle(development)> MyContract.deployed().then(function(i){contract=i})
+contract console
+
+contract setName('nic')
+truffle(development)> contract.getName()
+'nic'
+

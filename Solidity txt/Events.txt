@@ -1,0 +1,28 @@
+Events
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract MyContract {
+   //events propagate info to the world from the SC
+
+   event Score (uint date,  string player, string team);
+
+   function goalScore(string memory _player, string memory _team) external {
+      emit Score(block.timestamp, _player, _team); //emit  = to trigger the event
+   }
+   
+   }
+
+
+###########################
+PS C:\xampp\htdocs\Progetti\Solidity> truffle console
+truffle(development)> MyContract.deployed().then(function(i){contract=i})
+undefined
+truffle(development)> MyContract.deployed().then(function(r){contract=r;})
+undefined
+
+truffle(development)> contract.goalScore('Ronaldo', 'Juventus')
+truffle(development)> contract.goalScore('Messi', 'Inter')
+
+contract.getPastEvents('allEvents',{fromBlock:0})

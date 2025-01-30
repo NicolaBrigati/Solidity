@@ -1,0 +1,46 @@
+Statement/ Cycle
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract MyContract {
+
+    string public output;
+    string valueToCheck = "Pizza?"; 
+    
+    //verify if 2 string are equal or not
+    function ifStatement(string memory value) external returns(string memory) {
+        if (keccak256(abi.encodePacked(value)) == keccak256(abi.encodePacked(valueToCheck))) {
+            output = "Bon Apeti";
+        } 
+        else {
+            output = "Are you ona diet?";
+        }
+        return output;
+    } 
+
+    uint public sum;
+    function forLoop(uint end) external returns(uint) {
+        for(uint i=0; i<end; i++) {
+            sum = sum+1;
+        }
+        return sum;
+    }
+    function whileLoop(uint end) external pure returns(string memory) {
+        uint j = 0;
+        while(j<end) {
+            j = j + 1;
+        }
+        return "Done";
+    }
+}
+
+##################################
+PS C:\xampp\htdocs\Progetti\Solidity> truffle console
+truffle(development)> MyContract.deployed().then(function(i){contract=i})
+undefined
+truffle(development)> contract
+truffle(development)> contract.ifStatement("Pizza?")
+truffle(development)> contract.output()
+'Are you ona diet?'
+truffle(development)> contract.forLoop(10)

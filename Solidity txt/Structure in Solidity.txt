@@ -1,0 +1,27 @@
+Structure in Solidity
+
+#you can combine mapping and structure
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract MyContract {
+   //create a structure
+   struct Player {
+    string name;
+    uint goals;
+   }
+
+   Player[] public players;
+   function addPlayer(string calldata _name, uint _goals) external {
+    Player memory player =  Player(_name, _goals);
+    players.push(player);
+   
+   }
+   }
+
+########################################################################
+PS C:\xampp\htdocs\Progetti\Solidity> truffle migrate --reset
+PS C:\xampp\htdocs\Progetti\Solidity> truffle console
+contract.addPlayer('Messi', 40)
+contract.addPlayer('Ronaldo', 37)
+truffle(development)> contract.players(1)

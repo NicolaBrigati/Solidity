@@ -1,0 +1,37 @@
+Mapping
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract MyContract {
+    //mapping
+    //a=> 1
+    //f=> 4
+    //p=> 2
+    mapping(address=>uint) public age;
+
+    function assignAge(uint _age) external {
+        age[msg.sender] = _age;
+    }
+
+    function getAge(address _sender) external view returns(uint){
+        return age[_sender];
+
+    }
+
+
+}
+
+#######################
+nested mapping
+arrays mapping
+######################
+PS C:\xampp\htdocs\Progetti\Solidity> truffle console
+truffle(development)> MyContract.deployed().then(function(i){contract=i})
+truffle(development)> contract.assignAge(31);
+truffle(development)> result
+BN { negative: 0, words: [ 31, <1 empty item> ], length: 1, red: null }
+truffle(development)> parseFloat[result]
+undefined
+truffle(development)> parseFloat(result)
+31

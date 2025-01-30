@@ -1,0 +1,67 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract MyContract {
+   //receive eth from a SC
+
+   function foundContract() external payable {
+
+   }
+   
+   function getBalance() public view returns(uint) {
+      return address(this).balance;
+   }
+
+   //send
+   function transferAmount(address payable _recipient, uint _amount) external payable {
+      _recipient.transfer(_amount);
+   }
+
+   function callAmount(address payable _recipient, uint _amount) external payable {
+      (bool success, bytes memory data ) = _recipient.call{value:_amount}("");
+      require(success, "Transaction Failed");
+   }
+
+   }
+
+#####################################
+PS C:\xampp\htdocs\Progetti\Solidity> truffle console
+
+truffle(development)> MyContract.deployed().then(function(i){contract=i})
+
+Send Ether in Wei
+truffle(development)> contract.foundContract({value:5000000000000000000})
+
+Get Balance
+truffle(development)> contract.getBalance().then(function(r){result=r;})
+truffle(development)> result
+BN {
+  negative: 0,
+  words: [ 15990784, 14966929, 1110, <1 empty item> ],
+  length: 3,
+  red: null
+}
+
+truffle(development)> parseFloat(result)
+5000000000000000000
+
+########################################
+PS C:\xampp\htdocs\Progetti\Solidity> truffle console
+truffle(development)> MyContract.deployed().then(function(i){contract=i})
+truffle(development)> contract
+
+Send Eth:
+ruffle(development)> contract.foundContract({value:5000000000000000000})
+
+
+Get Balance
+truffle(development)> contract.getBalance().then(function(r){result=r;})
+
+truffle(development)> contract.transfertAmount('0xE265adbb2C17386Dd08Ea9a81a5F7Bec49e6Eb39','5000000000000000000')
+
+truffle(development)> contract.callAmount('0xE265adbb2C17386Dd08Ea9a81a5F7Bec49e6Eb39','3000000000000000000')
+
+
+
+
+

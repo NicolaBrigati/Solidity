@@ -1,0 +1,57 @@
+Special function in Solidity
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract MyContract {
+    
+    // var transaction = tx {tx.gasprice , tx.origin}
+    //var message = msg {msg.data, msg.sender,  msg.sig, msg.value}
+    //var blocks = block { blok.coinbase, block.difficulty, block.gaslimit, block.number, block.timestamp}
+
+    function getSummary() external view returns(address, uint, uint) {
+        return (msg.sender, block.number, tx.gasprice);
+    }
+
+
+}
+
+
+########################################
+truffle(development)> contract.getSummary().then(function(r)(results=r)
+evalmachine.<anonymous>:0
+contract.getSummary().then(function(r)(results=r)
+                                      ^
+
+Uncaught SyntaxError: Unexpected token '('
+truffle(development)> contract.getSummary().then(function(r) {results = r;})
+undefined
+truffle(development)> results
+Result {
+  '0': '0xe6C1c2399c3a38551adbdcb226422a6F5dff12f9',
+  '1': BN {
+    negative: 0,
+    words: [ 9, <1 empty item> ],
+    length: 1,
+    red: null
+  },
+  '2': BN {
+    negative: 0,
+    words: [ 0, <1 empty item> ],
+    length: 1,
+    red: null
+  }
+}
+truffle(development)> results[0]
+'0xe6C1c2399c3a38551adbdcb226422a6F5dff12f9'
+truffle(development)> results[1]
+BN { negative: 0, words: [ 9, <1 empty item> ], length: 1, red: null }
+truffle(development)> parseFloat(result[4])
+Uncaught ReferenceError: result is not defined
+truffle(development)> parseFloats(results[1])
+Uncaught ReferenceError: parseFloats is not defined
+truffle(development)> parseFloat(results[1])
+9
+truffle(development)> parseFloat(results[2])
+0
+truffle(development)>

@@ -1,0 +1,26 @@
+Variable in Solidity
+
+In MyContract.sol
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract MyContract {
+    
+    uint public nic = 10; //you can add internal, public, private
+
+}
+
+
+Access to the console > truffle console
+truffle(development)> MyContract.deployed().then(function(i){contract=i})
+undefined
+truffle(development)> contract
+truffle(development)> contract.nic();
+BN { negative: 0, words: [ 10, <1 empty item> ], length: 1, red: null }
+truffle(development)> contract.nic().then(function(r){result=r;})
+undefined
+truffle(development)> result
+BN { negative: 0, words: [ 10, <1 empty item> ], length: 1, red: null }
+truffle(development)> parseFloat(result)
+10
+truffle(development)>
