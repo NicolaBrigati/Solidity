@@ -1,0 +1,10 @@
+https://wizard.openzeppelin.com/
+Deploy the Token and Import it in Remix
+Once create the SC has been created i Remix do Flatten
+Copy Flatten in the SC imported
+Deploy
+Connect Metamask
+Connect Metamask to a Test Environment (Sepolia)
+Add Ethers to Metamask
+Transfer with Alchimy fake Ethers to yout test Environment
+Try to transact with Metamask
